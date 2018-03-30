@@ -1,6 +1,8 @@
-  // array is created to hold all the cards
+/*jshint esversion: 6 */
+/*jshint loopfunc:true */
+// array is created to hold all the cards
   let card = document.getElementsByClassName("card");
-  let cards = [...card]
+  let cards = [...card];
   console.log(cards);
   // deck variable created to hold all of the cards
   const deck = document.getElementById("card-deck");
@@ -12,12 +14,11 @@
   const stars = document.querySelectorAll(".fa-star");
   // matchedCard variable is created
   let matchedCard = document.getElementsByClassName("match");
-
+  let hour = 0;
+  let finalTime = 0;
   let starsList = document.querySelectorAll(".stars li");
-
   let closeicon = document.querySelector(".close");
-
-  let modal = document.getElementById("popup")
+  let modal = document.getElementById("popup");
    // array for opened cards
   var openedCards = [];
   // Shuffle function from http://stackoverflow.com/a/2450976
@@ -32,6 +33,7 @@
           array[randomIndex] = temporaryValue;
       }
       return array;
+ 
   }
   //startGame function is activated as soon as window is loaded across all browsers
   window.onload = startGame();
@@ -44,14 +46,14 @@
       [].forEach.call(cards, function(item){
         deck.appendChild(item);
       });
-      cards[i].classList.remove("show", "open", "match", "disabled");
+           cards[i].classList.remove("show", "open", "match", "disabled");
     }
   // moves is set to 0
     moves = 0;
     counter.innerHTML = moves;
-    for (var i = 0; i < stars.length; i++) {
-      stars[i].style.color = "FFD700";
-      stars[i].style.visibility = "visible";
+    for (var i1 = 0; i1 < stars.length; i1++) {
+      stars[i1].style.color = "FFD700";
+      stars[i1].style.visibility = "visible";
     }
   //timer is set to 0
     second = 0;
@@ -80,9 +82,9 @@
       }
     }
     else if (moves> 16) {
-      for (var i = 0; i < 3; i++) {
-        if (i>0){
-          stars[i].style.visibility = "collapse";
+      for (var i2 = 0; i2 < 3; i2++) {
+        if (i2>0){
+          stars[i2].style.visibility = "collapse";
         }
       }
     }
@@ -123,7 +125,7 @@
         unmatched();
       }
     }
-  };
+  }
   //matched function created when 2 cards are a match
   function matched(){
     openedCards[0].classList.add("match", "disabled");
@@ -179,10 +181,10 @@
       document.getElementById("starRating").innerHTML = starRating;
       document.getElementById("totalTime").innerHTML = finalTime;
       closeModal();
-    };
+    }
   }
   // play again function is created
-  function playAgain(){
+	  function playAgain(){
     modal.classList.remove("show");
     startGame();
   }
@@ -192,4 +194,4 @@
     card.addEventListener("click", displayCard);
     card.addEventListener("click", cardFlipped);
     card.addEventListener("click", wellDone);
-  };
+  }
